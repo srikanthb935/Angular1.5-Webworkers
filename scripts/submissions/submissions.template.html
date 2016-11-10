@@ -1,0 +1,22 @@
+<div>
+  <div class="submission" ng-repeat="submission in filtered =  (vm.data | filter: vm.submissionFilter | filter: vm.search) | limitTo: vm.limit">
+    <h3 class="title">
+      <img class="language-icon" src="{{::vm.getIamge(submission.language)}}" alt="{{::submission.language}}" /> {{::submission.title}}
+    </h3>
+    <div class="code">
+      <!-- hljs start -->
+      <div hljs hljs-source="::submission['source_code']">
+      </div>
+      <!-- hljs end -->
+      <div class="status">
+        <div class="btn-group" role="group" aria-label="status">
+          <button type="button" class="btn btn-default">{{::submission['compiler_status']}}</button>
+          <button type="button" class="btn btn-default">{{::submission.language}}</button>
+          <button type="button" class="btn btn-default">{{::submission.metadata.level}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center" ng-if="filtered.length == 0">No submissions avilable with applied filter on this page</h2>
+  <p class="text-center" ng-if="filtered.length > vm.limit && vm.limit < vm.maxPageSize"><span class="load-more fa fa-arrow-circle-o-down" ng-click="vm.limit = vm.limit + 10"></span></p>
+</div>

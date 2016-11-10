@@ -1,0 +1,99 @@
+<div class="main-container">
+  <!-- heading -->
+  <h1 class="heading"><img class="logo" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAUcAAAAJGZjZDljY2Q4LWU4NDktNDM5ZS04YTVjLTEzMzcyYjQ3NDA0Ng.jpg"
+      alt="cognizant" /> <span class="highlight">C</span>ode<span class="highlight">C</span>afe <span class="caption"> --- code hub with stats! </span></h1>
+  <!-- content -->
+  <div class="well">
+    <!-- filter by status mobile view-->
+    <div class="wiget mar-B-10 hidden-sm hidden-md hidden-lg">
+      <!-- heading -->
+      <h3 class="widget-heading"><i class="fa fa-filter float-left" aria-hidden="true"></i>filter by status</h3>
+      <div class="clear"></div>
+      <!-- content -->
+      <div class="widget-content pad-L-10">
+        <status-filters filter="vm.filter"></status-filters>
+      </div>
+    </div>
+    <div class="row">
+      <!-- left content -->
+      <div class="col-sm-8">
+        <div class="form-group search-box">
+          <label for="search" class="sr-only">Search</label>
+          <input type="text" id="search" ng-model="vm.search" ng-change="vm.getSubmissionDetails()" class="form-control" placeholder="Search (by title, level or language)"
+          />
+          <span class="fa fa-times-circle close" ng-if="vm.search.length > 0" ng-click="vm.search = ''"></span>
+        </div>
+        <!-- submissions list -->
+        <div class="">
+          <submissions ng-if="vm.languageMappings.length > 0" data="vm.submissions" language-mappings="vm.languageMappings" status-filter="vm.filter"
+            search="vm.search" limit="vm.limit"></submissions>
+          <!-- pagination -->
+          <nav>
+            <ul class="pagination" ng-if="vm.pages.length > 0">
+              <li ng-class="{'disabled': vm.pagination.start == 1}" ng-click="vm.previousPage()">
+                <a href="" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+              </li>
+              <li ng-click="vm.activePage(page)" ng-class="{'active': vm.pageNo == page}" ng-repeat="page in vm.pages | filter: vm.filterPages">
+                <a href="">{{::page}}</a>
+              </li>
+              <li ng-class="{'disabled': vm.pagination.end == vm.pages.length}" ng-click="vm.nextPage()">
+                <a href="" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+              </li>
+            </ul>
+          </nav>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <!-- right content -->
+      <div class="col-sm-4">
+        <!-- filter by status -->
+        <div class="wiget hidden-xs">
+          <!-- heading -->
+          <h3 class="widget-heading"><i class="fa fa-filter float-left" aria-hidden="true"></i>filter by status</h3>
+          <div class="clear"></div>
+          <!-- content -->
+          <div class="widget-content pad-L-10">
+            <status-filters filter="vm.filter"></status-filters>
+          </div>
+        </div>
+        <!-- stastical analysis -->
+        <div class="wiget">
+          <!-- heading -->
+          <h3 class="widget-heading"><i class="fa fa-list-ol float-left" aria-hidden="true"></i> stastical analysis</h3>
+          <div class="clear"></div>
+          <!-- content -->
+          <div class="widget-content">
+            <ul>
+              <li>
+                <h4>Top 5 Languages used:</h4>
+                <p ng-repeat="item in vm.statistics['top-5-languages-used']">
+                  <strong ng-bind="::item.language"></strong>: {{::item.submissions}}
+                </p>
+                <strong ng-if="vm.statistics['top-5-languages-used'].length == 0">processing ...</strong>
+              </li>
+              <li>
+                <h4>Top-2 Submissions attempted:</h4>
+                <p ng-repeat="item in vm.statistics['top-2-submissions-attempted']">
+                  - <span ng-bind="::item.title"></span>: {{::item.submissions}}
+                </p>
+                <strong ng-if="vm.statistics['top-2-submissions-attempted'].length == 0">processing ...</strong>
+              </li>
+              <li>
+                <h4>Number of submissions per Level</h4>
+                <strong ng-if="vm.statistics['submissions-per-level'].length == 0">processing ...</strong>
+                <ul>
+                  <li ng-repeat="item in vm.statistics['submissions-per-level']">
+                    <strong ng-bind="::item.level"></strong>: {{::item.submissions}}
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>Total Submissions</strong>: {{vm.statistics['total-submissions'] || 'processing ...'}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

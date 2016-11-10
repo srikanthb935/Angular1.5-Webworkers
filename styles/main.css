@@ -1,0 +1,92 @@
+/* heading starts */
+.logo {
+  width: 60px;
+}
+h1.heading {
+  color: #6cba62;
+  margin: 5px;
+}
+h1 > span.caption{
+  color: #57b3ac;
+  font-size: 14px;
+}
+h1 > span.highlight {
+  color: #00a5cf;
+}
+/* heading ends */
+h3.widget-heading {
+  color: #32A4D3;
+  padding: 5px;
+  border: 1px solid #91E4FB;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 16px;
+  background: #E5EDEF;
+}
+div.widget-content {
+  background: #E7E7E7;
+  border: 1px solid #EFEFEF;
+}
+.search-box {
+  position: relative;
+}
+.search-box span.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 16px;
+}
+#search {
+  padding-right: 25px;
+}
+.pad-L-10 {
+  padding-left: 10px;
+}
+.mar-B-10 {
+  margin-bottom: 10px;
+}
+.submission {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+.submission h3.title {
+  color: #4FB3AC;
+}
+.submission .code {
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  max-height: 300px;
+  overflow: scroll;
+}
+.submission .code .status{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.submission .code .status button {
+  color: #7A7A7A;
+}
+ul.pagination {
+  width: 60%;
+  margin: 0 auto;
+  display: block;
+}
+.language-icon {
+  width: 50px;
+}
+.load-more {
+  font-size: 30px;
+  color: #aaa;
+}
+.float-left {
+  float: left;
+}
+.clear {
+  clear: both;
+}
